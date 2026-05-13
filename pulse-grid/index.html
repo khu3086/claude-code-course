@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c0e1a">
+  <meta name="description" content="A reactive grid of cells that pulse with your cursor">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pulse Grid">
+  <meta property="og:description" content="A reactive grid of cells that pulse with your cursor">
+
+  <title>Pulse Grid — Interactive Demo</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><circle cx=%228%22 cy=%228%22 r=%226%22 fill=%22%237c4cff%22/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#demo">Skip to demo</a>
+
+  <header class="page-header">
+    <nav aria-label="Primary">
+      <a class="page-header__back" href="../" aria-label="Back to home">← Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <p class="hero__eyebrow">Interactive Demo</p>
+      <h1 id="hero-title" class="hero__title">Pulse Grid</h1>
+      <p class="hero__tagline">A reactive grid of cells that pulse with your cursor</p>
+    </section>
+
+    <section id="demo" class="demo" aria-labelledby="demo-title">
+      <h2 id="demo-title" class="demo__title">Try it</h2>
+      <p class="demo__hint">Interact with the stage below — click, drag, or use your keyboard.</p>
+
+      <div class="demo__stage" id="pulse-grid-stage" role="region" aria-label="Pulse Grid interactive stage">
+        <div class="grid" id="pulse-grid" aria-hidden="true"></div>
+      </div>
+
+      <div class="demo__controls" role="group" aria-label="Demo controls">
+        <button class="btn btn--primary" id="pulse-grid-action" type="button" aria-label="Trigger Pulse Grid">
+          Activate
+        </button>
+        <button class="btn btn--ghost" id="pulse-grid-reset" type="button" aria-label="Reset Pulse Grid">
+          Reset
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>Pulse Grid · Vanilla HTML, CSS, and JS</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
