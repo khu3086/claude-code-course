@@ -1,0 +1,68 @@
+// {{TITLE}} — {{TAGLINE}}
+
+const SELECTORS = {
+  stage: '#{{SLUG}}-stage',
+  action: '#{{SLUG}}-action',
+  reset: '#{{SLUG}}-reset',
+};
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+const init = () => {
+  const stage = document.querySelector(SELECTORS.stage);
+  const actionBtn = document.querySelector(SELECTORS.action);
+  const resetBtn = document.querySelector(SELECTORS.reset);
+
+  if (!stage || !actionBtn || !resetBtn) {
+    console.warn('[{{SLUG}}] missing required elements');
+    return;
+  }
+
+  const state = {
+    active: false,
+  };
+
+  const render = () => {
+    stage.dataset.active = String(state.active);
+    actionBtn.setAttribute('aria-pressed', String(state.active));
+    actionBtn.textContent = state.active ? 'Deactivate' : 'Activate';
+  };
+
+  const activate = () => {
+    state.active = !state.active;
+    if (prefersReducedMotion.matches) {
+      render();
+    } else {
+      requestAnimationFrame(render);
+    }
+  };
+
+  const reset = () => {
+    state.active = false;
+    requestAnimationFrame(render);
+  };
+
+  actionBtn.addEventListener('click', activate);
+  resetBtn.addEventListener('click', reset);
+
+  // Keyboard: Space/Enter on stage triggers the action for touch+keyboard parity
+  stage.setAttribute('tabindex', '0');
+  stage.addEventListener('keydown', (event) => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      activate();
+    }
+  });
+
+  // TODO: demo logic — replace this stub with your interaction.
+  // Keep visual updates inside requestAnimationFrame and animate
+  // only `transform` / `opacity` for 60fps.
+
+  render();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init, { once: true });
+} else {
+  init();
+}
